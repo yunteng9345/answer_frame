@@ -4,21 +4,50 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<script type="text/javascript">
+    /*
+    *增加模板行
+    */
+    function addRow() {
+        var table = document.getElementById("addTable");
+        var tbody = document.getElementById("templeteTBody");
+        var newTBody = tbody.cloneNode(true);
+        newTBody.style.display="";
+        var footTBody = document.getElementById("footTbody");
+        return table.insertBefore(newTBody,footTBody);
+    }
+    /*
+    *删除模板行
+    */
+    function deleteRow(obj) {
+        var tbody = obj.parentNode.parentNode.parentNode;
+        var table = document.getElementById("addTable");
+        table.removeChild(tbody);
+    }
+    /**
+     *向模板中填充值
+     */
+    function setValue(){
+        var tbody=addRow();
+    }
+</script>
+<BODY>
 
-<h1>题目集，小题目表单提交</h1>
-<!-- 表单提交用户信息,注意字段的设置,直接是*{} -->
-<h1 th:text="${timu.t_num}"></h1>
-<!--<form action="#" th:action="@{/back/add}" th:object="${timu}" method="post">-->
-    <!--题目集名称： <input type="text" th:field="*{t_name}" /><br>-->
-    <!--题目数：<input type="text" th:field="*{t_num}" /><br>-->
-    <!--是否限时<select class="input-text"  th:field="*{is_time_limit}" >-->
-    <!--<option th:value="0" >否</option>-->
-    <!--<option th:value="1">是</option>-->
-<!--</select><br>-->
-    <!--限制时长（单位秒）：<input type="text" th:field="*{time_limit}" /><br>-->
-    <!--题目可答次数(默认1次)：<input type="text" th:field="*{t_count}" /><br>-->
-    <!--<input type="submit" />-->
-</form>
-</body>
+单选题提交
+<input type="button" value="完成编辑" onclick=""><br>
+<input type="button" value="增加" onclick="setValue()">
+<table id="addTable">
+    <tbody id="templeteTBody" style="display: none;">
+    <tr>
+        <td><input type="button" value="删除" onclick="deleteRow(this)"/></td>
+        <td>a</td>
+        <td><input type="text" /></td>
+        <td>b</td>
+        <td><input type="text" /></td>
+    </tr>
+    </tbody>
+    <tbody id="footTbody">
+    </tbody>
+</table>
+</BODY>
 </html>
