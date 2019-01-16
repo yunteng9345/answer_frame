@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+
+<h1 th:text="${admin.admin_name}"></h1><br>
+<h1 th:text="${admin.admin_pd}"></h1><br>
+<a th:href="@{addTimu}" >添加题目集</a><br>
+<a th:href="@{addExcelModel}" >添加信息录入模板</a><br>
+
+</body>
+</html>
