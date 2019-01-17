@@ -1,12 +1,14 @@
 <!doctype html>
-<html>
+<html xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>JScharts Test</title>
 </head>
-<script type="text/javascript" src="js/jscharts_mb.js"></script>
+<script type="text/javascript" src="/js/jscharts_mb.js"></script>
 <body>
+
 <div id="chartcontainer">这只是一个替换内容</div><br/>
 <div id="chartcontainer1">这只是一个替换内容</div><br/>
 <div id="chartcontainer2">这只是一个替换内容</div><br/>
@@ -20,26 +22,32 @@
     myChart.draw();
 
     //柱状图
-    var myData1 = new Array(['Unit 1',20], ['Unit 2',10], ['Unit 3',30], ['Unit 4',10],['Unit 5',5]);
+    var myData1 = new Array(['小明',20], ['小红',10], ['张三',30], ['李四',10],['王五',5]);
     var myChart1 = new JSChart('chartcontainer1', 'bar');
+    myChart.patchMbString();
+    myChart.setFontFamily("微软雅黑"); // 设置显示字体为微软雅黑
+
+    myChart.setAxisValuesFontSize(9); // 设置柱状图和线条图的标尺字体大小为9px
+    myChart.setPieUnitsFontSize(10);
     myChart1.setDataArray(myData1);
     myChart1.draw();
 
     //饼状图
-    var myData2 = new Array(['Unit 1',20], ['Unit 2',10], ['Unit 3',30], ['Unit 4',10],['Unit 5',5],['Unit 6',15],['Unit 7',5]);
+    var myData2 = new Array(['安抚',20], ['Unit 2',10], ['Unit 3',30], ['Unit 4',10],['Unit 5',5],['Unit 6',15],['Unit 7',5]);
     var myChart2 = new JSChart('chartcontainer2', 'pie');
     myChart2.setDataArray(myData2);
     myChart2.draw();
 
     //饼状图（xml导入数据）
-    var myChart3 = new JSChart('chartcontainer3', 'pie');
-    myChart3.setDataXML('js/jschart_data.xml');
-    myChart3.draw();
+    //var myChart3 = new JSChart('chartcontainer3', 'pie');
+   // myChart3.setDataXML('/js/jschart_data.xml');
+   // myChart3.draw();
 
     //饼状图（json导入数据）
     var myChart4 = new JSChart('chartcontainer4', 'pie');
-    myChart4.setDataJSON('js/jschart_data.json');
+    myChart4.setDataJSON('/js/jschart_data.json');
     myChart4.draw();
+
 </script>
 </body>
 </html>
