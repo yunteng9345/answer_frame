@@ -100,11 +100,11 @@ public class BackController {
          * @return java.lang.String
          */
 
-        return  "back_excel";
+        return  "analyze";
     }
 
     public  static void main(String []args){
-        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        //String uuid = UUID.randomUUID().toString().replaceAll("-","");
         //System.out.println(uuid);
     }
 
