@@ -301,16 +301,16 @@ public class AntiFraud {
     public static void main(String[] argv) throws InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException
     {
         /* 密钥,请进行替换,密钥申请地址 https://console.qcloud.com/capi  */
-        final String SECRET_ID = "AKIDQgiV3LlIuHOGsFgIyOZUBetujLhsnSs2";
-        final String SECRET_KEY = "3vXtzpPnvRnulNjqiLiuqWx85oKbeeOt";
+        final String SECRET_ID = "";
+        final String SECRET_KEY = "";
 
         Map<String, String> args = new TreeMap<String, String>();
 
         // 基本字段
-        args.put("idNumber", "150121199510271128");
-        args.put("phoneNumber", "0086-13327126543");
+        args.put("idNumber", "");
+        args.put("phoneNumber", "0086-");
         // 可选字段
-        args.put("name", "丁嘉瑞");
+        args.put("name", "");
 
         String url = BspAPI.makeURL("GET", "AntiFraud", "gz", SECRET_ID, SECRET_KEY, args, "utf-8");
         ApiResponse res = ApiRequest.sendGet(url, "");
