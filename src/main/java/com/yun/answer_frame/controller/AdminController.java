@@ -16,14 +16,13 @@ import java.util.UUID;
 /**
  * @author ：云腾
  * @date ：Created in 2018/12/27 12:17
- * @description：微信答题框架后端控制器
+ * @description：控制、查询、管理员
  * @modified By：
  * @version: 0.0.1$
  */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
 
     @RequestMapping("/index")
     public String index(Model model,String name)

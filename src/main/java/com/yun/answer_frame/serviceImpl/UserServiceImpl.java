@@ -1,6 +1,7 @@
 package com.yun.answer_frame.serviceImpl;
 
 import com.yun.answer_frame.entity.Admin;
+import com.yun.answer_frame.entity.User;
 import com.yun.answer_frame.service.UserService;
 
 import java.util.List;
@@ -13,5 +14,12 @@ import java.util.List;
  * @version: v0.0.1$
  */
 public class UserServiceImpl implements UserService {
+    public UserServiceImpl() {
+        super();
+    }
 
+    @Override
+    public Integer addWeChatUser(User user) {
+        return null;
+    }
 }

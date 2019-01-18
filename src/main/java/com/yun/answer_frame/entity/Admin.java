@@ -66,4 +66,5 @@ public class Admin {
                 ", is_vip=" + is_vip +
                 '}';
     }
+
 }
