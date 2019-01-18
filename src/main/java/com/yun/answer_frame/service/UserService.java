@@ -13,7 +13,7 @@ import java.util.List;
  * @version: v0.0.1$
  */
 public interface UserService {
-   //添加微信提交数据的用户
+   //添加微信用户
 
 
 }
