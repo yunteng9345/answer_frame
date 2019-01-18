@@ -14,8 +14,6 @@ import java.util.List;
  */
 public interface UserService {
    //添加微信提交数据的用户
-    public  Integer addWeChatUser(User user);
-    //查询
 
 
 }

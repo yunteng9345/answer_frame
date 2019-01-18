@@ -14,12 +14,5 @@ import java.util.List;
  * @version: v0.0.1$
  */
 public class UserServiceImpl implements UserService {
-    public UserServiceImpl() {
-        super();
-    }
 
-    @Override
-    public Integer addWeChatUser(User user) {
-        return null;
-    }
 }
