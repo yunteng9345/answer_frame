@@ -12,7 +12,9 @@ public class Admin {
     private String a_id;
     private String admin_name;
     private String admin_pd;
+    private String academy;
     private Integer is_vip;
+
 
     public String getA_id() {
         return a_id;
@@ -46,12 +48,21 @@ public class Admin {
         this.admin_pd = admin_pd;
     }
 
+    public String getAcademy() {
+        return academy;
+    }
+
+    public void setAcademy(String academy) {
+        this.academy = academy;
+    }
+
     @Override
     public String toString() {
         return "Admin{" +
                 "a_id='" + a_id + '\'' +
                 ", admin_name='" + admin_name + '\'' +
                 ", admin_pd='" + admin_pd + '\'' +
+                ", academy='" + academy + '\'' +
                 ", is_vip=" + is_vip +
                 '}';
     }

@@ -21,8 +21,8 @@ import java.util.UUID;
  * @version: 0.0.1$
  */
 @Controller
-@RequestMapping("/back")
-public class BackController {
+@RequestMapping("/admin")
+public class AdminController {
 
 
     @RequestMapping("/index")

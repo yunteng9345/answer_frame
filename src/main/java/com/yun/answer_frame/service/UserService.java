@@ -1,5 +1,10 @@
 package com.yun.answer_frame.service;
 
+import com.yun.answer_frame.entity.Admin;
+import com.yun.answer_frame.entity.User;
+
+import java.util.List;
+
 /**
  * @author ：云腾
  * @date ：Created in 2019/1/17 15:41
@@ -8,5 +13,9 @@ package com.yun.answer_frame.service;
  * @version: v0.0.1$
  */
 public interface UserService {
+   //添加微信提交数据的用户
+    public  Integer addWeChatUser(User user);
+    //查询
+
 
 }
