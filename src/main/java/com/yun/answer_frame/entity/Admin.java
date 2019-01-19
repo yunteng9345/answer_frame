@@ -13,7 +13,7 @@ public class Admin {
     private String admin_name;
     private String admin_pd;
     private String academy;
-    private Integer is_vip;
+    private String is_vip;
 
 
     public String getA_id() {
@@ -24,11 +24,11 @@ public class Admin {
         this.a_id = a_id;
     }
 
-    public Integer getIs_vip() {
+    public String getIs_vip() {
         return is_vip;
     }
 
-    public void setIs_vip(Integer is_vip) {
+    public void setIs_vip(String is_vip) {
         this.is_vip = is_vip;
     }
 

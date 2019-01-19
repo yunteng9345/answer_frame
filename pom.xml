@@ -70,6 +70,14 @@
         </dependency>
 
 
+        <!--分页插件-->
+         <dependency>
+             <groupId>com.github.pagehelper</groupId>
+              <artifactId>pagehelper</artifactId>
+             <version>4.1.6</version>
+         </dependency>
+
+
 
     </dependencies>
 
@@ -80,6 +88,26 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+
+        </resources>
+
+
+
     </build>
+
+
+
+
+
 
 </project>

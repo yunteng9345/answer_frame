@@ -6,10 +6,11 @@ import java.util.List;
 
 public interface AdminService {
     //添加新管理员
-    public Integer addAdmin(Admin admin);
+     Integer addAdmin(Admin admin);
     //删除管理员
-    public Integer deleteAdmin(Admin admin);
+     Integer deleteAdmin(Admin admin);
     //查询所有管理员
-    public List<Admin> selectAllAdmin();
-    //设置管理员是否为vip
+     List<Admin> selectAllAdmin();
+    //查询管理员总数
+    Integer countItem();
 }
