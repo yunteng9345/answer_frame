@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"></meta>
@@ -15,13 +15,17 @@
 </head>
 
 <body>
-<table id="dg" title="超级管理员界面" class="easyui-datagrid" fitColumns="true" pagination="true" rownumbers="true" url="/user/list" fit="true" toolbar="#tb">
+
+
+<table id="dg"  title="超级管理员界面" class="easyui-datagrid" fitColumns="true" pagination="true" rownumbers="true" url="/superadmin/list" fit="true" toolbar="#tb">
     <thead>
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
-        <th field="id" width="100" align="center">编号</th>
-        <th field="name" width="200" align="center">用户名</th>
-        <th field="word" width="200" align="center">密码</th>
+        <th field="a_id" width="100" align="center">编号</th>
+        <th field="admin_name" width="200" align="center">用户名</th>
+        <th field="admin_pd" width="200" align="center">密码</th>
+        <th field="academy" width="200" align="center">院系</th>
+        <th field="id_vip" width="200" align="center">是否vip</th>
     </tr>
     </thead>
 </table>
@@ -42,11 +46,11 @@
 </div>
 
 <!-- 修改框内容 -->
-<div id="dlg" class="easyui-dialog" style="width: 500px;height: 200px;padding: 10px 20px" closed="true" buttons="#dlg-buttons">
+<div id="dlg" class="easyui-dialog" style="width: 500px;height: 300px;padding: 10px 20px" closed="true" buttons="#dlg-buttons">
     <form id="fm" method="post">
         <table cellspacing="8px">
             <tr>
-                <td>用户名：</td>
+                <td>超级用户名：</td>
                 <td>
                     <input type="text" id="name" name="name" class="easyui-validatebox" required="true" />
                 </td>
@@ -55,6 +59,18 @@
                 <td>密码：</td>
                 <td>
                     <input type="text" id="word" name="word" class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>所属院系：</td>
+                <td>
+                    <input type="text" id="academy" name="word" class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>是否vip：</td>
+                <td>
+                    <input type="text" id="is_vip" name="word" class="easyui-validatebox" required="true" />
                 </td>
             </tr>
         </table>

@@ -53,8 +53,8 @@ public class SuperAdminController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(@ModelAttribute SuperAdmin superAdmin,Model model)
     {
-        System.out.println(superAdmin.getId());
-        System.out.println(superAdmin.getPd());
+        //System.out.println(superAdmin.getId());
+       // System.out.println(superAdmin.getPd());
         //验证成功
         if(superAdmin.getId().equals("yun")&&superAdmin.getPd().equals("123"))
         {
@@ -88,18 +88,13 @@ public class SuperAdminController {
      */
     @ResponseBody
     @RequestMapping("/save")
-    public Admin save( ) {
-
-        Admin admin=new Admin();
-        admin.setAdmin_name("132");
-        admin.setAcademy("递四方速递");
-        admin.setAdmin_pd("5454");
-        admin.setIs_vip("不是");
+    public Map<String, Object> save(Admin admin) {
+        Map<String, Object> resultMap = new HashMap<String, Object>();
         adminServiceImpl.addAdmin(admin);
-
-
-        return admin;
+        resultMap.put("success", true);
+        return resultMap;
     }
+
 
     /**
      * 2、显示
@@ -110,10 +105,14 @@ public class SuperAdminController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public List<Admin> itemsPage(){
+    public Map<String, Object> itemsPage(){
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("list", adminServiceImpl.selectAllAdmin());
+        //resultMap.put("total", count);
+        resultMap.put("success", true);
 
-
-        return null;
+        System.out.println("执行了/list");
+        return resultMap;
         //System.out.println(pageService.findItemByPage(currentPage,pageSize));
        // return pageService.findItemByPage(currentPage,pageSize);
     }
