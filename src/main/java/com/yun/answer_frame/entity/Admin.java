@@ -9,18 +9,18 @@ package com.yun.answer_frame.entity;
  */
 
 public class Admin {
-    private String a_id;
+    private Integer a_id;
     private String admin_name;
     private String admin_pd;
     private String academy;
     private String is_vip;
 
 
-    public String getA_id() {
+    public Integer getA_id() {
         return a_id;
     }
 
-    public void setA_id(String a_id) {
+    public void setA_id(Integer a_id) {
         this.a_id = a_id;
     }
 

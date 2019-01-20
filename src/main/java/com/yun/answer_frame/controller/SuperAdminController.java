@@ -107,21 +107,16 @@ public class SuperAdminController {
      * @param
      * @return
      */
-    /**
-     * 商品分页功能(集成mybatis的分页插件pageHelper实现)
-     *
-     * @param    :当前页数
-     * @param        :每页显示的总记录数
-     * @return
-     */
-    @RequestMapping("/itemsPage")
+
+    @RequestMapping("/list")
     @ResponseBody
     public List<Admin> itemsPage(){
-        return adminServiceImpl.selectAllAdmin();
+
+
+        return null;
         //System.out.println(pageService.findItemByPage(currentPage,pageSize));
        // return pageService.findItemByPage(currentPage,pageSize);
     }
-
 
 
     /**
