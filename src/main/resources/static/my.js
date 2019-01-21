@@ -3,7 +3,7 @@ var url;
 
 /* 1、添加用户 */
 function openLinkAddDialog() {
-    console.log("add");
+    //console.log("add");
     $("#dlg").dialog("open").dialog("setTitle", "添加友情链接信息");
     url = "/superadmin/save";
 }
@@ -19,7 +19,7 @@ function openLinkModifyDialog() {
     /*EasyUI 回显信息*/
     $("#fm").form("load", row);
     $("#dlg").dialog("open").dialog("setTitle", "编辑友情链接信息");
-    //url = "/superadmin/save?id=" + row.id;
+    url = "/superadmin/save?id=" + row.id;
 }
 
 /* 3、删除用户 */
@@ -31,20 +31,21 @@ function deleteLink() {
         return;
     }
     var strIds = [];
-    console.log(selectedRows.length);
+    //console.log(selectedRows.length);
     /*SpringBoot 小于号要求*/
     for(var i = 0; i < selectedRows.length; i++) {
-        strIds.push(selectedRows[i].id);
+        strIds.push(selectedRows[i].data.a_id);
 
     }
+
     /* 转化 "1,2,3" 这种格式  */
     var ids = strIds.join(",");
+    console.log(ids);
     $.messager.confirm("系统提示", "您确定要删除这<font color='red'>" + selectedRows.length + "</font>条数据吗？", function(r) {
         if(r) {
             $.post("/superadmin/delete", {
                 ids: ids
             }, function(result) {
-
 
                 /* 后台传来一个true */
                 if(result.success) {
