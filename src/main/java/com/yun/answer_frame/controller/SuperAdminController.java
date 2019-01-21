@@ -43,7 +43,6 @@ public class SuperAdminController {
 ////        admin.setAdmin_name("yun");
 ////        admin.setAdmin_pd("123");
         SuperAdmin superAdmin =new SuperAdmin();
-
         //System.out.println(admin);
         model.addAttribute("superAdmin",superAdmin);
         //model.addAttribute("err","用户名或者密码错误！");
@@ -70,24 +69,38 @@ public class SuperAdminController {
 
 
     /**
-     * 4、删除
+     * 删除管理员
      * @param
      * @return
      */
     @ResponseBody
-    @RequestMapping("/delete")
-    public Map<String, Object> delete() {
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public Map<String, Object> delete(@RequestParam(value = "ids") String ids) {
+        System.out.println("ids的值："+ids);
 
-        return null;
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        String[] idsStr = ids.split(",");
+
+        //for (int i = 0; i < ids.length(); i++) {
+        for (int i = 0; i < idsStr.length; i++) { // 2018.7.25 根据网友意见做出正确修改
+            Admin admin=new Admin();
+            admin.setA_id(Integer.parseInt(idsStr[i]));
+            adminServiceImpl.deleteAdmin(admin);
+            //userDao.delete(Integer.parseInt(idsStr[i]));
+        }
+        resultMap.put("success", true);
+
+        return resultMap;
     }
 
+
     /**
-     * 3、添加、修改
+     * 3、添加、修改管理员
      * @param
      * @return
      */
     @ResponseBody
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
     public Map<String, Object> save(Admin admin) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         adminServiceImpl.addAdmin(admin);
@@ -97,7 +110,7 @@ public class SuperAdminController {
 
 
     /**
-     * 2、显示
+     * 2、显示所有管理员
      * @param
      * @param
      * @return
@@ -105,14 +118,26 @@ public class SuperAdminController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public Map<String, Object> itemsPage(){
-        Map<String, Object> resultMap = new HashMap<String, Object>();
-        resultMap.put("list", adminServiceImpl.selectAllAdmin());
-        //resultMap.put("total", count);
-        resultMap.put("success", true);
+    public Map<String, Object> itemsPage(Admin admin, @RequestParam(value = "page", required = false) Integer page,
+                                         @RequestParam(value = "rows", required = false) Integer rows){
 
-        System.out.println("执行了/list");
+       // int page=Integer.parseInt(request.getParameter("page"));
+       // int pageSzie=Integer.parseInt(request.getParameter("rows"));//pageSzie
+        int startRecord=(page-1)*rows+1;
+        int total=adminServiceImpl.countItem();
+        List<Admin>  stuinforlist=adminServiceImpl.selectAllAdmin();
+        Map resultMap=new HashMap();
+        resultMap.put("total",total-1);
+        resultMap.put("rows",stuinforlist);
         return resultMap;
+
+//        Map<String, Object> resultMap = new HashMap<String, Object>();
+//        resultMap.put("list", );
+//        //resultMap.put("total", count);
+//        resultMap.put("success", true);
+//
+//        System.out.println("执行了/list");
+//        return resultMap;
         //System.out.println(pageService.findItemByPage(currentPage,pageSize));
        // return pageService.findItemByPage(currentPage,pageSize);
     }
@@ -126,9 +151,6 @@ public class SuperAdminController {
     public String crud() {
         return "crud";
     }
-
-
-
 
 
 }
