@@ -8,8 +8,8 @@ package com.yun.answer_frame.entity;
  * @version: 0.0.1$
  */
 public class TimuItem extends Timu {
-    private String t_id;
-    private String ti_id;
+    private Integer t_id;
+    private Integer ti_id;
     private String ti_name;
     private String ti_a;
     private String ti_b;
@@ -31,19 +31,19 @@ public class TimuItem extends Timu {
                 '}';
     }
 
-    public String getT_id() {
+    public Integer getT_id() {
         return t_id;
     }
 
-    public void setT_id(String t_id) {
+    public void setT_id(Integer t_id) {
         this.t_id = t_id;
     }
 
-    public String getTi_id() {
+    public Integer getTi_id() {
         return ti_id;
     }
 
-    public void setTi_id(String ti_id) {
+    public void setTi_id(Integer ti_id) {
         this.ti_id = ti_id;
     }
 

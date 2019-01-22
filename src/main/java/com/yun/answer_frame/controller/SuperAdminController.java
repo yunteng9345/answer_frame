@@ -117,28 +117,20 @@ public class SuperAdminController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public Map<String, Object> itemsPage(Admin admin, @RequestParam(value = "page", required = false) Integer page,
+    public Map<String, Object> itemsPage(@RequestParam(value = "page", required = false) Integer page,
                                          @RequestParam(value = "rows", required = false) Integer rows){
 
        // int page=Integer.parseInt(request.getParameter("page"));
        // int pageSzie=Integer.parseInt(request.getParameter("rows"));//pageSzie
-        int startRecord=(page-1)*rows+1;
+       // int startRecord=(page-1)*rows+1;
         int total=adminServiceImpl.countItem();
         List<Admin>  stuinforlist=adminServiceImpl.selectAllAdmin();
+        System.out.println(stuinforlist);
         Map resultMap=new HashMap();
         resultMap.put("total",total-1);
         resultMap.put("rows",stuinforlist);
         return resultMap;
 
-//        Map<String, Object> resultMap = new HashMap<String, Object>();
-//        resultMap.put("list", );
-//        //resultMap.put("total", count);
-//        resultMap.put("success", true);
-//
-//        System.out.println("执行了/list");
-//        return resultMap;
-        //System.out.println(pageService.findItemByPage(currentPage,pageSize));
-       // return pageService.findItemByPage(currentPage,pageSize);
     }
 
 
