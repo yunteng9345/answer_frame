@@ -76,11 +76,9 @@ public class SuperAdminController {
     @ResponseBody
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
     public Map<String, Object> delete(@RequestParam(value = "ids") String ids) {
-        System.out.println("ids的值："+ids);
-
+        //System.out.println("ids的值："+ids);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         String[] idsStr = ids.split(",");
-
         //for (int i = 0; i < ids.length(); i++) {
         for (int i = 0; i < idsStr.length; i++) { // 2018.7.25 根据网友意见做出正确修改
             Admin admin=new Admin();
@@ -102,6 +100,7 @@ public class SuperAdminController {
     @ResponseBody
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public Map<String, Object> save(Admin admin) {
+        //System.out.println(admin.getA_id());
         Map<String, Object> resultMap = new HashMap<String, Object>();
         adminServiceImpl.addAdmin(admin);
         resultMap.put("success", true);
@@ -147,10 +146,10 @@ public class SuperAdminController {
      * 1、进入增删改查界面
      * @return
      */
-    @RequestMapping("/crud")
-    public String crud() {
-        return "crud";
-    }
+//    @RequestMapping("/crud")
+//    public String crud() {
+//        return "crud";
+//    }
 
 
 }

@@ -15,12 +15,25 @@
 
 
     <delete id="deleteAdmin" parameterType="com.yun.answer_frame.entity.Admin">
-        delete from t_admin where aid=#{aid}
+        delete from t_admin where a_id=#{a_id}
     </delete>
 
 
     <insert id="addAdmin" parameterType="com.yun.answer_frame.entity.Admin">
-    insert into t_admin(admin_name,admin_pd,academy,is_vip)values (#{admin_name},#{admin_pd},#{academy},#{is_vip})
+
+
+        <choose>
+            <when test="a_id==null">
+                insert into t_admin(admin_name,admin_pd,academy,is_vip)values (#{admin_name},#{admin_pd},#{academy},#{is_vip})
+            </when>
+            <otherwise>
+            update t_admin set admin_name=#{admin_name},admin_pd=#{admin_pd},academy=#{academy},is_vip=#{is_vip} where a_id=#{a_id}
+            </otherwise>
+        </choose>
+
+
+
+
     </insert>
 
     <!--<select id="allUser" resultType="com.jishou.schoolfellow.model.User">-->
