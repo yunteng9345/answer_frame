@@ -19,7 +19,7 @@ function openLinkModifyDialog() {
     /*EasyUI 回显信息*/
     $("#fm").form("load", row);
     $("#dlg").dialog("open").dialog("setTitle", "编辑友情链接信息");
-    url = "/superadmin/save?id=" + row.id;
+    url = "/superadmin/save?a_id=" + row.a_id;
 }
 
 /* 3、删除用户 */
@@ -34,7 +34,7 @@ function deleteLink() {
     //console.log(selectedRows.length);
     /*SpringBoot 小于号要求*/
     for(var i = 0; i < selectedRows.length; i++) {
-        strIds.push(selectedRows[i].data.a_id);
+        strIds.push(selectedRows[i].a_id);
 
     }
 
@@ -85,8 +85,10 @@ function saveLink() {
 
 /* 清空表单数据 */
 function resetValue() {
-    $("#name").val("");
-    $("#word").val("");
+    $("#admin_name").val("");
+    $("#admin_pd").val("");
+    $("#academy").val("");
+    $("#is_vip").val("");
 }
 
 /* 关闭对话框 */
