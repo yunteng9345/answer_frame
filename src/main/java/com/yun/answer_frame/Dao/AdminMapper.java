@@ -16,4 +16,6 @@ public interface AdminMapper {
     List<Admin> selectAllAdmin();
     //设置管理员是否为vip
     Integer countItem();
+    //根据管理员账号查询用户是否存在
+    Admin selectAdminByAid(Admin admin);
 }

@@ -23,9 +23,9 @@
     insert into t_admin(admin_name,admin_pd,academy,is_vip)values (#{admin_name},#{admin_pd},#{academy},#{is_vip})
     </insert>
 
-    <!--<select id="allUser" resultType="com.jishou.schoolfellow.model.User">-->
-    <!--select * from user order by utime desc , urname desc-->
-    <!--</select>-->
+    <select id="selectAdminByAid" resultType="com.yun.answer_frame.entity.Admin">
+    select * from t_admin where admin_name=#{admin_name} and admin_pd=#{admin_pd}
+    </select>
 
     <!--<select id="allUser11" resultType="com.jishou.schoolfellow.model.User">-->
     <!--select * from user where utime is not null order by utime desc , urname desc-->

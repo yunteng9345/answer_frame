@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录界面</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/admin/login}" th:object="${admin}" method="post">
+
+    管理员用户名：<input type="text" th:field="*{admin_name}" /><br>
+    密码：<input type="password" th:field="*{admin_pd}" /><br>
+    <span style="color:#F00" th:text="${err}  "></span>
+    <input type="submit" />
+</form>
+
+
+<!--<h1 th:text="${admin.admin_name}"></h1><br>-->
+<!--<h1 th:text="${admin.admin_pd}"></h1><br>-->
+<!--<a th:href="@{addTimu}" >添加题目集</a><br>-->
+<!--<a th:href="@{addExcelModel}" >添加信息录入模板</a><br>-->
+
+
+</body>
+</html>

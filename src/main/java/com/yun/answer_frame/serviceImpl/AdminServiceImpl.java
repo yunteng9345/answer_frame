@@ -20,6 +20,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Admin selectAdminByAid(Admin admin) {
+        return adminMapper.selectAdminByAid(admin);
+    }
+
+    @Override
     public Integer addAdmin(Admin admin) {
         return adminMapper.addAdmin(admin);
     }

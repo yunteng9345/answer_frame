@@ -25,7 +25,7 @@ import java.util.*;
  * @modified By：
  * @version: 0.0.1$
  */
-@Controller
+@Controller("superAdminController")
 @RequestMapping("/superadmin")
 public class SuperAdminController {
 
@@ -40,8 +40,8 @@ public class SuperAdminController {
     public String index(Model model,String name)
     {
 //        Admin admin=new Admin();
-////        admin.setAdmin_name("yun");
-////        admin.setAdmin_pd("123");
+//        admin.setAdmin_name("yun");
+//        admin.setAdmin_pd("123");
         SuperAdmin superAdmin =new SuperAdmin();
         //System.out.println(admin);
         model.addAttribute("superAdmin",superAdmin);
@@ -53,7 +53,7 @@ public class SuperAdminController {
     public String login(@ModelAttribute SuperAdmin superAdmin,Model model)
     {
         //System.out.println(superAdmin.getId());
-       // System.out.println(superAdmin.getPd());
+       //System.out.println(superAdmin.getPd());
         //验证成功
         if(superAdmin.getId().equals("yun")&&superAdmin.getPd().equals("123"))
         {

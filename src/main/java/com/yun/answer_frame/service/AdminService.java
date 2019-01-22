@@ -13,4 +13,6 @@ public interface AdminService {
      List<Admin> selectAllAdmin();
     //查询管理员总数
     Integer countItem();
+    //根据管理员账号查询用户是否存在
+    Admin selectAdminByAid(Admin admin);
 }
