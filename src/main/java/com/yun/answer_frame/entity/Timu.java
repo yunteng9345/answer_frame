@@ -1,5 +1,6 @@
 package com.yun.answer_frame.entity;
 
+import java.net.ServerSocket;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @version: 0.0.1$
  */
 public class Timu {
-    private  Integer t_id;//题目集标识符
+    private String  t_id;//题目集标识符
     private String t_name;//题目名称
     private Integer a_id;//管理员唯一标识符
     private Date t_creat_date;//题目创建时间
@@ -44,11 +45,11 @@ public class Timu {
         this.t_count = t_count;
     }
 
-    public Integer getT_id() {
+    public String getT_id() {
         return t_id;
     }
 
-    public void setT_id(Integer t_id) {
+    public void setT_id(String t_id) {
         this.t_id = t_id;
     }
 

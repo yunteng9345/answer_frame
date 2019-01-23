@@ -3,6 +3,7 @@ package com.yun.answer_frame.controller;
 import com.yun.answer_frame.entity.Admin;
 import com.yun.answer_frame.entity.SuperAdmin;
 import com.yun.answer_frame.entity.Timu;
+import com.yun.answer_frame.entity.TimuItem;
 import com.yun.answer_frame.serviceImpl.AdminServiceImpl;
 import com.yun.answer_frame.serviceImpl.TimuServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller("adminController")
 @RequestMapping("/admin")
@@ -49,6 +47,7 @@ public class AdminController {
             HttpSession session=request.getSession();
             session.setAttribute("now_admin",admin1);
             model.addAttribute("now_admin",admin1.getAcademy()+"管理员");
+//            model.addAttribute("info","   ");
             return "back_index";
         }
         //验证失败
@@ -73,7 +72,7 @@ public class AdminController {
 
 
 
-    //题目添加
+    //题目集添加
     @RequestMapping("/addTimu")
     public String addTimu(Timu timu, HttpServletRequest request,Model model)
     {
@@ -82,10 +81,52 @@ public class AdminController {
         timu.setA_id(admin.getA_id());
         Date date =new Date();
         timu.setT_creat_date(date);
+        UUID uuid = UUID.randomUUID();
+        String uuidStr=uuid.toString();
+        timu.setT_id(uuidStr);
         timuService.addTimu(timu);
-        //model.addAttribute("timu",timu);
+        HttpSession session=request.getSession();
+        session.setAttribute("timunum",timu);
+        model.addAttribute("timuItem",new TimuItem());
         return "back_addTimuItem";
     }
+
+
+    //题目小项添加
+    @RequestMapping("/addTimuItem")
+    public String addTimu(TimuItem timuItem, HttpServletRequest request, Model model)
+    {
+        Timu timu =(Timu) request.getSession().getAttribute("timunum");
+        //System.out.println(timu);
+        int num =timu.getT_num();
+        //System.out.println("录入题目号："+num);
+        if(num>1){
+            //System.out.println("t_id："+timu.getT_id());
+            //timuItem.setT_id(timu.getT_id());
+            String t_id=timu.getT_id();
+            timuItem.setT_id(t_id);
+            timuService.addTimuItem(timuItem);
+            HttpSession session=request.getSession();
+            timu.setT_num(--num);
+            session.setAttribute("timunum",timu);
+            model.addAttribute("timuItem",new TimuItem());
+            return "back_addTimuItem";
+        }
+        else
+        {
+            String t_id=timu.getT_id();
+            timuItem.setT_id(t_id);
+            timuService.addTimuItem(timuItem);
+
+            Admin admin =(Admin)request.getSession().getAttribute("now_admin");
+            model.addAttribute("now_admin",admin.getAcademy()+"管理员");
+            model.addAttribute("info","添加题目成功");
+            return "back_index";
+        }
+
+        //return "back_addTimuItem";
+    }
+
 
 
 

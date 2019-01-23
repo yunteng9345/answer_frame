@@ -2,6 +2,7 @@ package com.yun.answer_frame.serviceImpl;
 
 import com.yun.answer_frame.Dao.TimuMapper;
 import com.yun.answer_frame.entity.Timu;
+import com.yun.answer_frame.entity.TimuItem;
 import com.yun.answer_frame.service.TimuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,11 @@ public class TimuServiceImpl  implements TimuService {
     @Override
     public Integer selectAllTimu() {
         return timuMapper.selectAllTimu();
+    }
+
+    @Override
+    public Integer addTimuItem(TimuItem timuItem) {
+        return timuMapper.addTimuItem(timuItem);
     }
 
     @Override

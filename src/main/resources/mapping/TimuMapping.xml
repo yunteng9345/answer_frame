@@ -4,8 +4,8 @@
 
 
     <insert id="addTimu" parameterType="com.yun.answer_frame.entity.Timu">
-    insert into t_timu(t_name,a_id,t_creat_date,t_num,is_time_limit,time_limit,t_count)
-    values (#{t_name},#{a_id},#{t_creat_date},#{t_num},#{is_time_limit},#{time_limit},#{t_count})
+    insert into t_timu(t_id,t_name,a_id,t_creat_date,t_num,is_time_limit,time_limit,t_count)
+    values (#{t_id},#{t_name},#{a_id},#{t_creat_date},#{t_num},#{is_time_limit},#{time_limit},#{t_count})
     </insert>
 
 
@@ -16,6 +16,13 @@
     <select id="selectAllTimu" resultType="Integer">
     select count(*) from t_timu
     </select>
+
+
+    <insert id="addTimuItem" parameterType="com.yun.answer_frame.entity.TimuItem">
+    insert into t_timuitem(t_id,ti_name,ti_a,ti_b,ti_c,ti_d,ti_right)
+    values (#{t_id},#{ti_name},#{ti_a},#{ti_b},#{ti_c},#{ti_d},#{ti_right})
+    </insert>
+
 
 
     <!--&lt;!&ndash;查询所有管理员 &ndash;&gt;-->
