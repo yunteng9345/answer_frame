@@ -20,6 +20,15 @@ public class Timu {
     private String is_time_limit;//题目是否限时
     private Integer time_limit;//如果限制，时长多少。单位秒
     private Integer  t_count;//题目可答次数   默认0，无限次
+    private String is_publish;//题目集是否发布
+
+    public String getIs_publish() {
+        return is_publish;
+    }
+
+    public void setIs_publish(String is_publish) {
+        this.is_publish = is_publish;
+    }
 
     public String getIs_time_limit() {
         return is_time_limit;
@@ -90,12 +99,13 @@ public class Timu {
         return "Timu{" +
                 "t_id='" + t_id + '\'' +
                 ", t_name='" + t_name + '\'' +
-                ", a_id='" + a_id + '\'' +
+                ", a_id=" + a_id +
                 ", t_creat_date=" + t_creat_date +
                 ", t_num=" + t_num +
                 ", is_time_limit='" + is_time_limit + '\'' +
                 ", time_limit=" + time_limit +
                 ", t_count=" + t_count +
+                ", is_publish='" + is_publish + '\'' +
                 '}';
     }
 }

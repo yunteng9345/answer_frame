@@ -11,7 +11,7 @@
     <!-- 中文化 -->
     <script type="text/javascript" src="../jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
     <!-- 导入自己的 js -->
-    <script type="text/javascript" src="../my.js"></script>
+    <script type="text/javascript" src="../my1.js"></script>
 </head>
 
 <body>
@@ -23,10 +23,12 @@
         <th field="cb" checkbox="true" align="center"></th>
         <th field="t_id" width="100" align="center">编号</th>
         <th field="t_name" width="200" align="center">题目集名称</th>
+
         <th field="is_time_limit" width="200" align="center">是否限时</th>
         <th field="time_limit" width="200" align="center">限时时长</th>
         <th field="t_count" width="200" align="center">可答题次数</th>
         <th field="t_creat_date" width="200" align="center">题目创建时间</th>
+        <th field="is_publish" width="200" align="center">是否发布</th>
     </tr>
     </thead>
 </table>
@@ -35,8 +37,9 @@
 <div id="tb">
     <div>
         <!--plain="true"去掉边框-->
-        <a href="javascript:openLinkAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
-        <a href="javascript:openLinkModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+        <!--<a href="javascript:openLinkAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>-->
+        <!--<a href="javascript:openLinkModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>-->
+        <a href="javascript:publish()" class="easyui-linkbutton" iconCls="icon-ok" plain="true">发布</a>
         <a href="javascript:deleteLink()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
     </div>
     <!--<div>-->

@@ -18,10 +18,23 @@
     </select>
 
 
+    <delete id="deleteTimu" parameterType="com.yun.answer_frame.entity.Timu">
+        delete from t_timu where t_id=#{t_id}
+    </delete>
+
+
+    <update id="publishTimu" parameterType="com.yun.answer_frame.entity.Timu">
+    update t_timu set is_publish=#{is_publish} where t_id=#{t_id}
+    </update>
+
+
+
     <insert id="addTimuItem" parameterType="com.yun.answer_frame.entity.TimuItem">
     insert into t_timuitem(t_id,ti_name,ti_a,ti_b,ti_c,ti_d,ti_right)
     values (#{t_id},#{ti_name},#{ti_a},#{ti_b},#{ti_c},#{ti_d},#{ti_right})
     </insert>
+
+
 
 
 
@@ -88,10 +101,7 @@
     <!--,#{utime},#{hd1},#{hd2},#{hd3},#{hd4},#{hd5},#{hd6})-->
     <!--</insert>-->
 
-    <!--<update id="alterUserByUno" parameterType="com.jishou.schoolfellow.model.User">-->
-    <!--update user set uname =#{uname},ucompany=#{ucompany},uphone=#{uphone},uroom=#{uroom},uclass=#{uclass},uremark=#{uremark},urname=#{urname},jt=#{jt},ltime=#{ltime},utime=#{utime},hd2=#{hd2}-->
-    <!--,hd3=#{hd3},hd4=#{hd4},hd1=#{hd1},hd5=#{hd5},hd6=#{hd6} where uno=#{uno}-->
-    <!--</update>-->
+
 
     <!--<update id="alterUserByUno22" parameterType="com.jishou.schoolfellow.model.User">-->
     <!--update user set uname =#{uname},ucompany=#{ucompany},uphone=#{uphone},uroom=#{uroom},uclass=#{uclass},uremark=#{uremark},urname=#{urname},jt=#{jt},ltime=#{ltime},hd2=#{hd2}-->

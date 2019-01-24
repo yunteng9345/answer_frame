@@ -1,5 +1,6 @@
 package com.yun.answer_frame.service;
 
+import com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl;
 import com.yun.answer_frame.entity.Admin;
 import com.yun.answer_frame.entity.Timu;
 import com.yun.answer_frame.entity.TimuItem;
@@ -13,10 +14,16 @@ public interface TimuService {
     List<Timu> selectAllTimuByAid(Timu timu);
     //查询题目数量
     Integer selectAllTimu();
+    //删除题目
+    Integer deleteTimu(Timu timu);
+    //发布题目
+    Integer publishTimu(Timu timu);
+
 
     /*
     题目
      */
+    //添加题目
     Integer addTimuItem(TimuItem timuItem);
 
 

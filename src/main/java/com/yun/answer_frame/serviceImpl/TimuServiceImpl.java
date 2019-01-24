@@ -16,6 +16,16 @@ public class TimuServiceImpl  implements TimuService {
     private TimuMapper timuMapper;
 
     @Override
+    public Integer publishTimu(Timu timu) {
+        return timuMapper.publishTimu(timu);
+    }
+
+    @Override
+    public Integer deleteTimu(Timu timu) {
+        return timuMapper.deleteTimu(timu);
+    }
+
+    @Override
     public Integer selectAllTimu() {
         return timuMapper.selectAllTimu();
     }

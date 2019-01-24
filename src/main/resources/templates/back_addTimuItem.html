@@ -4,27 +4,89 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<link rel="stylesheet" type="text/css" href="../jquery-easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../jquery-easyui/themes/icon.css" />
+<script type="text/javascript" src="../jquery-easyui/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../jquery-easyui/jquery.easyui.min.js"></script>
+<!-- 中文化 -->
+<script type="text/javascript" src="../jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+<!-- 导入自己的 js -->
+<script type="text/javascript" src="../my1.js"></script>
+
 <BODY>
+
+
+
+<div id="dlg" class="easyui-dialog" style="width: 500px;height: 300px;padding: 10px 20px" closed="" buttons="#dlg-buttons">
+    <form action="#" th:action="@{/admin/addTimuItem}" th:object="${timuItem}" method="post">
+        <table cellspacing="8px">
+            <tr>
+                <td>题目名称：</td>
+                <td>
+                    <input type="text" th:field="*{ti_name}"  class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>
+                    <input name="Fruit" type="radio" value="a"  />
+                    <input type="text" th:field="*{ti_a}"  class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>
+                    <input name="Fruit" type="radio" value="b"  />
+                    <input type="text" th:field="*{ti_b}"  class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>
+                    <input name="Fruit" type="radio" value="c" CHECKED  />
+                    <input type="text" th:field="*{ti_c}"  class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>D</td>
+                <td>
+                    <input name="Fruit" type="radio" value="d"  />
+                    <input type="text" th:field="*{ti_d}"  class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="下一题" />
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
 
 <!-- 表单提交用户信息,注意字段的设置,直接是*{} -->
 
-<form action="#" th:action="@{/admin/addTimuItem}" th:object="${timuItem}" method="post">
-    题目名称： <input type="text" th:field="*{ti_name}" /><br>
+<!--<form action="#" th:action="@{/admin/addTimuItem}" th:object="${timuItem}" method="post">-->
+    <!--题目名称： <input type="text" th:field="*{ti_name}" /><br>-->
 
-    <label><input name="Fruit" type="radio" value="a" />A </label>
-    <input type="text" th:field="*{ti_a}" /><br>
+    <!--<label><input name="Fruit" type="radio" value="a"  />A </label>-->
+    <!--<input type="text" th:field="*{ti_a}" /><br>-->
 
-    <label><input name="Fruit" type="radio" value="b" />B </label>
-    <input type="text" th:field="*{ti_b}" /><br>
+    <!--<label><input name="Fruit" type="radio" value="b" checked   />B </label>-->
+    <!--<input type="text" th:field="*{ti_b}" /><br>-->
 
-    <label><input name="Fruit" type="radio" value="c" />C </label>
-    <input type="text" th:field="*{ti_c}" /><br>
+    <!--<label><input name="Fruit" type="radio" value="c" />C </label>-->
+    <!--<input type="text" th:field="*{ti_c}" /><br>-->
 
-    <label><input name="Fruit" type="radio"  value="d" />D </label>
-    <input type="text" th:field="*{ti_d}" /><br>
+    <!--<label><input name="Fruit" type="radio"  value="d" />D </label>-->
+    <!--<input type="text" th:field="*{ti_d}" /><br>-->
 
-    <input type="submit" />
-</form>
+    <!--<input type="submit" />-->
+<!--</form>-->
 
 
 

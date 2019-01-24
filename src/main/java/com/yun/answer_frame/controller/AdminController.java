@@ -149,8 +149,6 @@ public class AdminController {
     }
 
 
-
-
     @RequestMapping("/mTimu")
     public String mTimu(Model model,HttpServletRequest request)
     {
@@ -182,20 +180,51 @@ public class AdminController {
         return resultMap;
 
     }
+    /**
+     * 删除题目集
+     * @param
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public Map<String, Object> delete(@RequestParam(value = "ids") String ids) {
+        //System.out.println("ids的值："+ids);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        String[] idsStr = ids.split(",");
+        //for (int i = 0; i < ids.length(); i++) {
+        for (int i = 0; i < idsStr.length; i++) { // 2018.7.25 根据网友意见做出正确修改
+            Timu timu =new Timu();
+            timu.setT_id(idsStr[i]);
+            timuService.deleteTimu(timu);
+            //userDao.delete(Integer.parseInt(idsStr[i]));
+        }
+        resultMap.put("success", true);
 
+        return resultMap;
+    }
 
+    /**
+     * 发布题目集
+     * @param
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/publish",method = RequestMethod.POST)
+    public Map<String, Object> publish(@RequestParam(value = "ids") String ids) {
+        //System.out.println("ids的值："+ids);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        String[] idsStr = ids.split(",");
+        //for (int i = 0; i < ids.length(); i++) {
+        for (int i = 0; i < idsStr.length; i++) {
+            Timu timu =new Timu();
+            timu.setT_id(idsStr[i]);
+            timu.setIs_publish("已发布");
+            timuService.publishTimu(timu);
+            //userDao.delete(Integer.parseInt(idsStr[i]));
+        }
+        resultMap.put("success", true);
 
-
-
-
-
-
-
-
-
-
-
-
-
+        return resultMap;
+    }
 
 }
