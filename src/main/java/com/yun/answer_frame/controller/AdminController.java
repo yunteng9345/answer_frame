@@ -1,5 +1,6 @@
 package com.yun.answer_frame.controller;
 
+import com.alibaba.druid.sql.visitor.functions.Char;
 import com.yun.answer_frame.entity.Admin;
 import com.yun.answer_frame.entity.SuperAdmin;
 import com.yun.answer_frame.entity.Timu;
@@ -88,6 +89,8 @@ public class AdminController {
         HttpSession session=request.getSession();
         session.setAttribute("timunum",timu);
         model.addAttribute("timuItem",new TimuItem());
+        //model.addAttribute("num","");
+
         return "back_addTimuItem";
     }
 
@@ -100,6 +103,21 @@ public class AdminController {
         //System.out.println(timu);
         int num =timu.getT_num();
         //System.out.println("录入题目号："+num);
+        String right = request.getParameter("Fruit");
+        //timuItem.setTi_right("123456");
+        char []c=right.toCharArray();
+        //System.out.println(c[0]);
+
+        switch (c[0])
+        {
+            case 'a': timuItem.setTi_right(timuItem.getTi_a());break;
+            case 'b': timuItem.setTi_right(timuItem.getTi_b());break;
+            case 'c': timuItem.setTi_right(timuItem.getTi_c());break;
+            case 'd': timuItem.setTi_right(timuItem.getTi_d());break;
+            default:  break;
+        }
+        //System.out.println("当前的答案："+timuItem.getTi_right());
+
         if(num>1){
             //System.out.println("t_id："+timu.getT_id());
             //timuItem.setT_id(timu.getT_id());
@@ -107,9 +125,12 @@ public class AdminController {
             timuItem.setT_id(t_id);
             timuService.addTimuItem(timuItem);
             HttpSession session=request.getSession();
-            timu.setT_num(--num);
+
             session.setAttribute("timunum",timu);
+           // String a=Integer.toString(num);
+            //model.addAttribute("num","当前为第"+a+"道题目录入");
             model.addAttribute("timuItem",new TimuItem());
+            timu.setT_num(--num);
             return "back_addTimuItem";
         }
         else
@@ -120,7 +141,7 @@ public class AdminController {
 
             Admin admin =(Admin)request.getSession().getAttribute("now_admin");
             model.addAttribute("now_admin",admin.getAcademy()+"管理员");
-            model.addAttribute("info","添加题目成功");
+            model.addAttribute("info","添加题目成功!请到我的题目集发布！");
             return "back_index";
         }
 
@@ -165,13 +186,7 @@ public class AdminController {
 
 
 
-    //题目分析页
-    @RequestMapping("/anaylze")
-    public String analyze(Model model)
-    {
-        //model.addAttribute("timu",timu);
-        return "analyze";
-    }
+
 
 
 

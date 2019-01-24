@@ -9,9 +9,11 @@
 
 <span style="color:#F00" th:text="${now_admin}  "> </span><a th:href="@{/admin/index}">注销</a><br><br>
 <!--<span style="color:#F00" th:text="${info}  ">-->
+<span style="color:green" th:text="${info}"></span><br>
+
 <a th:href="@{/admin/timu}">题目录入</a>
-<a th:href="@{/admin/mTimu}">我发布的题目集</a>
-<a th:href="@{/admin/anaylze}">题目集分析</a>
+<a th:href="@{/admin/mTimu}">我的题目集</a>
+<a th:href="@{/anaylze/index}">题目集分析</a>
 
 <!--<h1 th:text="${admin.admin_name}"></h1><br>-->
 <!--<h1 th:text="${admin.admin_pd}"></h1><br>-->

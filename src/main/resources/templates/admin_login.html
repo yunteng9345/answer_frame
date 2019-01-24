@@ -5,15 +5,50 @@
     <meta charset="UTF-8">
     <title>管理员登录界面</title>
 </head>
+<link rel="stylesheet" type="text/css" href="../jquery-easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../jquery-easyui/themes/icon.css" />
+<script type="text/javascript" src="../jquery-easyui/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../jquery-easyui/jquery.easyui.min.js"></script>
+<!-- 中文化 -->
+<script type="text/javascript" src="../jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+<!-- 导入自己的 js -->
+<script type="text/javascript" src="../my.js"></script>
 <body>
 
-<form action="#" th:action="@{/admin/login}" th:object="${admin}" method="post">
+<div id="dlg" class="easyui-dialog" style="width: 500px;height: 300px;padding: 10px 20px" closed="" buttons="#dlg-buttons">
+    <form action="#" th:action="@{/admin/login}" th:object="${admin}" method="post" >
+        <table cellspacing="8px">
+            <tr>
+                <td>管理员用户名：</td>
+                <td>
+                    <input type="text" th:field="*{admin_name}"   class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>
+                    <input type="password" th:field="*{admin_pd}" class="easyui-validatebox" required="true" />
+                    <span style="color:#F00" th:text="${err}  "></span>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" />
+                </td>
+            </tr>
 
-    管理员用户名：<input type="text" th:field="*{admin_name}" /><br>
-    密码：<input type="password" th:field="*{admin_pd}" /><br>
-    <span style="color:#F00" th:text="${err}  "></span>
-    <input type="submit" />
-</form>
+
+        </table>
+    </form>
+</div>
+
+<!--<form action="#" th:action="@{/admin/login}" th:object="${admin}" method="post">-->
+
+    <!--管理员用户名：<input type="text" th:field="*{admin_name}" /><br>-->
+    <!--密码：<input type="password" th:field="*{admin_pd}" /><br>-->
+    <!--<span style="color:#F00" th:text="${err}  "></span>-->
+    <!--<input type="submit" />-->
+<!--</form>-->
 
 
 <!--<h1 th:text="${admin.admin_name}"></h1><br>-->

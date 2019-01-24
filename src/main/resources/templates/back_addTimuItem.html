@@ -4,44 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<script type="text/javascript">
-    /*
-    *增加模板行
-    */
-    function addRow() {
-        var table = document.getElementById("addTable");
-        var tbody = document.getElementById("templeteTBody");
-        var newTBody = tbody.cloneNode(true);
-        newTBody.style.display="";
-        var footTBody = document.getElementById("footTbody");
-        return table.insertBefore(newTBody,footTBody);
-    }
-    /*
-    *删除模板行
-    */
-    function deleteRow(obj) {
-        var tbody = obj.parentNode.parentNode.parentNode;
-        var table = document.getElementById("addTable");
-        table.removeChild(tbody);
-    }
-    /**
-     *向模板中填充值
-     */
-    function setValue(){
-        var tbody=addRow();
-    }
-</script>
 <BODY>
 
 <!-- 表单提交用户信息,注意字段的设置,直接是*{} -->
+
 <form action="#" th:action="@{/admin/addTimuItem}" th:object="${timuItem}" method="post">
     题目名称： <input type="text" th:field="*{ti_name}" /><br>
-    A<input type="text" th:field="*{ti_a}" /><br>
-    B<input type="text" th:field="*{ti_b}" /><br>
-    C<input type="text" th:field="*{ti_c}" /><br>
-    D<input type="text" th:field="*{ti_d}" /><br>
-    right<input type="text" th:field="*{ti_right}" /><br>
 
+    <label><input name="Fruit" type="radio" value="a" />A </label>
+    <input type="text" th:field="*{ti_a}" /><br>
+
+    <label><input name="Fruit" type="radio" value="b" />B </label>
+    <input type="text" th:field="*{ti_b}" /><br>
+
+    <label><input name="Fruit" type="radio" value="c" />C </label>
+    <input type="text" th:field="*{ti_c}" /><br>
+
+    <label><input name="Fruit" type="radio"  value="d" />D </label>
+    <input type="text" th:field="*{ti_d}" /><br>
 
     <input type="submit" />
 </form>

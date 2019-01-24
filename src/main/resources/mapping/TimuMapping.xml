@@ -10,7 +10,7 @@
 
 
     <select id="selectAllTimuByAid" resultType="com.yun.answer_frame.entity.Timu">
-    select * from t_timu where a_id=#{a_id}
+    select * from t_timu where a_id=#{a_id} order  by t_creat_date desc
     </select>
 
     <select id="selectAllTimu" resultType="Integer">
