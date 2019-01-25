@@ -11,10 +11,10 @@ import java.util.List;
 public interface TimuMapper {
     Integer addTimu(Timu timu);
     List<Timu> selectAllTimuByAid(Timu timu);
-    Integer selectAllTimu();
+    Integer selectAllTimuNum();
     Integer deleteTimu(Timu timu);
     Integer publishTimu(Timu timu);
-
+    List<Timu> selectAllTimu();
 
 
 

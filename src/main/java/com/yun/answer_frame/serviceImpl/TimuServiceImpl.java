@@ -21,13 +21,18 @@ public class TimuServiceImpl  implements TimuService {
     }
 
     @Override
+    public List<Timu> selectAllTimu() {
+        return timuMapper.selectAllTimu();
+    }
+
+    @Override
     public Integer deleteTimu(Timu timu) {
         return timuMapper.deleteTimu(timu);
     }
 
     @Override
-    public Integer selectAllTimu() {
-        return timuMapper.selectAllTimu();
+    public Integer selectAllTimuNum() {
+        return timuMapper.selectAllTimuNum();
     }
 
     @Override

@@ -13,7 +13,7 @@
     select * from t_timu where a_id=#{a_id} order  by t_creat_date desc
     </select>
 
-    <select id="selectAllTimu" resultType="Integer">
+    <select id="selectAllTimuNum" resultType="Integer">
     select count(*) from t_timu
     </select>
 
@@ -33,6 +33,11 @@
     insert into t_timuitem(t_id,ti_name,ti_a,ti_b,ti_c,ti_d,ti_right)
     values (#{t_id},#{ti_name},#{ti_a},#{ti_b},#{ti_c},#{ti_d},#{ti_right})
     </insert>
+
+
+    <select id="selectAllTimu" resultType="com.yun.answer_frame.entity.Timu">
+    select * from t_timu
+    </select>
 
 
 

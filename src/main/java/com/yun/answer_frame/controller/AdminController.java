@@ -169,7 +169,7 @@ public class AdminController {
         Timu timu =new Timu();
         Admin admin =(Admin)request.getSession().getAttribute("now_admin");
         timu.setA_id(admin.getA_id());
-        int total=timuService.selectAllTimu();
+        int total=timuService.selectAllTimuNum();
         //System.out.println(total);
         List<Timu>  stuinforlist=timuService.selectAllTimuByAid(timu);
         //System.out.println(stuinforlist);

@@ -13,12 +13,13 @@ public interface TimuService {
     //我发布的题目集
     List<Timu> selectAllTimuByAid(Timu timu);
     //查询题目数量
-    Integer selectAllTimu();
+    Integer selectAllTimuNum();
     //删除题目
     Integer deleteTimu(Timu timu);
     //发布题目
     Integer publishTimu(Timu timu);
-
+    //查询所有题目集
+    List<Timu> selectAllTimu();
 
     /*
     题目
