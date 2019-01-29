@@ -16,6 +16,11 @@ public class TimuServiceImpl  implements TimuService {
     private TimuMapper timuMapper;
 
     @Override
+    public List<TimuItem> selectAllTimuitemByTid(Timu timu) {
+        return timuMapper.selectAllTimuitemByTid(timu);
+    }
+
+    @Override
     public Integer publishTimu(Timu timu) {
         return timuMapper.publishTimu(timu);
     }

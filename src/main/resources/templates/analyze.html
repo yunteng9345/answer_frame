@@ -1,52 +1,176 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JScharts Test</title>
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>超级管理员界面</title>
+    <link rel="stylesheet" type="text/css" href="../jquery-easyui/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../jquery-easyui/themes/icon.css" />
+    <script type="text/javascript" src="../jquery-easyui/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../jquery-easyui/jquery.easyui.min.js"></script>
+    <!-- 中文化 -->
+    <script type="text/javascript" src="../jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+    <!-- 导入自己的 js -->
+    <script type="text/javascript" src="../my2.js"></script>
 </head>
-<script type="text/javascript" src="/js/jscharts_mb.js"></script>
+
 <body>
 
-<div id="chartcontainer">这只是一个替换内容</div><br/>
-<div id="chartcontainer1">这只是一个替换内容</div><br/>
-<div id="chartcontainer2">这只是一个替换内容</div><br/>
-<div id="chartcontainer3">这只是一个替换内容</div><br/>
-<div id="chartcontainer4">这只是一个替换内容</div><br/>
-<script type="text/javascript">
-    //曲线图
-    var myData = new Array([10,20], [15,10], [20,30], [25,10], [30,90]);
-    var myChart = new JSChart('chartcontainer', 'line');
-    myChart.setDataArray(myData);
-    myChart.draw();
 
-    //柱状图
-    var myData1 = new Array(['小明',20], ['小红',10], ['张三',30], ['李四',10],['王五',5]);
-    var myChart1 = new JSChart('chartcontainer1', 'bar');
-    myChart.patchMbString();
-    myChart.setFontFamily("微软雅黑"); // 设置显示字体为微软雅黑
-    myChart.setAxisValuesFontSize(9); // 设置柱状图和线条图的标尺字体大小为9px
-    myChart.setPieUnitsFontSize(10);
-    myChart1.setDataArray(myData1);
-    myChart1.draw();
+<table id="dg"  title="题目集" class="easyui-datagrid" fitColumns="true" pagination="true" rownumbers="true" url="/admin/myTimu" fit="true" toolbar="#tb">
+    <thead>
+    <tr>
+        <th field="cb" checkbox="true" align="center"></th>
+        <th field="t_id" width="100" align="center">编号</th>
+        <th field="t_name" width="200" align="center">题目集名称</th>
 
-    //饼状图
-    var myData2 = new Array(['安抚',20], ['Unit 2',10], ['Unit 3',30], ['Unit 4',10],['Unit 5',5],['Unit 6',15],['Unit 7',5]);
-    var myChart2 = new JSChart('chartcontainer2', 'pie');
-    myChart2.setDataArray(myData2);
-    myChart2.draw();
+        <th field="is_time_limit" width="200" align="center">是否限时</th>
+        <th field="time_limit" width="200" align="center">限时时长</th>
+        <th field="t_count" width="200" align="center">可答题次数</th>
+        <th field="t_creat_date" width="200" align="center">题目创建时间</th>
+        <th field="is_publish" width="200" align="center">是否发布</th>
+    </tr>
+    </thead>
+</table>
 
-    //饼状图（xml导入数据）
-    //var myChart3 = new JSChart('chartcontainer3', 'pie');
-   // myChart3.setDataXML('/js/jschart_data.xml');
-   // myChart3.draw();
+<!-- CRUD 菜单栏 -->
+<div id="tb">
+    <div>
+        <!--plain="true"去掉边框-->
+        <!--<a href="javascript:openLinkAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>-->
+        <!--<a href="javascript:openLinkModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>-->
+        <a href="javascript:look()" class="easyui-linkbutton" iconCls="icon-ok" plain="true">查看</a>
+        <!--<a href="javascript:deleteLink()" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>-->
+    </div>
+    <!--<div>-->
+    <!--&nbsp;用户名：&nbsp;<input type="text" id="s_name" size="20" onkeydown="if(event.keyCode==13) searchWebSite()" /> &nbsp;密码：&nbsp;-->
+    <!--<input type="text" id="s_word" size="20" onkeydown="if(event.keyCode==13) searchWebSite()" />-->
+    <!--<a href="javascript:searchWebSite()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>-->
+    <!--</div>-->
+</div>
 
-    //饼状图（json导入数据）
-    //var myChart4 = new JSChart('chartcontainer4', 'pie');
-    //myChart4.setDataJSON('/js/jschart_data.json');
-    //myChart4.draw();
+<!-- 修改对话框的 save、close 按钮 -->
+<div id="dlg-buttons">
+    <a href="javascript:saveLink()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="javascript:closeLinkDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+</div>
 
-</script>
 </body>
+
 </html>
+
+<!-- 表单提交用户信息,注意字段的设置,直接是*{} -->
+
+<!--<form action="#" th:action="@{/admin/addTimuItem}" th:object="${timuItem}" method="post">-->
+<!--题目名称： <input type="text" th:field="*{ti_name}" /><br>-->
+
+<!--<label><input name="Fruit" type="radio" value="a"  />A </label>-->
+<!--<input type="text" th:field="*{ti_a}" /><br>-->
+
+<!--<label><input name="Fruit" type="radio" value="b" checked   />B </label>-->
+<!--<input type="text" th:field="*{ti_b}" /><br>-->
+
+<!--<label><input name="Fruit" type="radio" value="c" />C </label>-->
+<!--<input type="text" th:field="*{ti_c}" /><br>-->
+
+<!--<label><input name="Fruit" type="radio"  value="d" />D </label>-->
+<!--<input type="text" th:field="*{ti_d}" /><br>-->
+
+<!--<input type="submit" />-->
+<!--</form>-->
+
+
+
+<!--<input type="button" value="完成编辑" onclick=""><br>-->
+
+<!--<table id="addTable">-->
+<!--<tbody id="templeteTBody" style="display: none;">-->
+<!--<tr>-->
+<!--<td><input type="button" value="删除" onclick="deleteRow(this)"/></td>-->
+<!--<td>题目内容：</td>-->
+<!--<td><input type="text"></input></td>  <br>-->
+
+<!--<td><input type="checkbox" ></input></td>-->
+<!--<td>a</td>-->
+<!--<td><input type="text" /></td>   <br>-->
+
+<!--<td><input type="checkbox" ></input></td>-->
+<!--<td>b</td>-->
+<!--<td><input type="text" /></td>  <br>-->
+
+<!--<td><input type="checkbox" ></input></td>-->
+<!--<td>c</td>-->
+<!--<td><input type="text" /></td>  <br>-->
+
+<!--<td><input type="checkbox" ></input></td>-->
+<!--<td>d</td>-->
+<!--<td><input type="text" /></td>  <br>-->
+<!--</tr>-->
+
+<!--</tbody>-->
+<!--<tbody id="footTbody">-->
+<!--</tbody>-->
+<!--</table>-->
+
+
+<!--<input type="button" value="增加" onclick="setValue()">-->
+
+</BODY>
+</html>
+
+
+
+<!--<!doctype html>-->
+<!--<html xmlns:th="www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+    <!--<title>JScharts Test</title>-->
+<!--</head>-->
+<!--<script type="text/javascript" src="/js/jscharts_mb.js"></script>-->
+<!--<body>-->
+
+<!--<div id="chartcontainer">这只是一个替换内容</div><br/>-->
+<!--<div id="chartcontainer1">这只是一个替换内容</div><br/>-->
+<!--<div id="chartcontainer2">这只是一个替换内容</div><br/>-->
+<!--<div id="chartcontainer3">这只是一个替换内容</div><br/>-->
+<!--<div id="chartcontainer4">这只是一个替换内容</div><br/>-->
+<!--<script type="text/javascript">-->
+    <!--//曲线图-->
+    <!--var myData = new Array([10,20], [15,10], [20,30], [25,10], [30,90]);-->
+    <!--var myChart = new JSChart('chartcontainer', 'line');-->
+    <!--myChart.setDataArray(myData);-->
+    <!--myChart.draw();-->
+
+    <!--//柱状图-->
+    <!--var myData1 = new Array(['小明',20], ['小红',10], ['张三',30], ['李四',10],['王五',5]);-->
+    <!--var myChart1 = new JSChart('chartcontainer1', 'bar');-->
+    <!--myChart.patchMbString();-->
+    <!--myChart.setFontFamily("微软雅黑"); // 设置显示字体为微软雅黑-->
+    <!--myChart.setAxisValuesFontSize(9); // 设置柱状图和线条图的标尺字体大小为9px-->
+    <!--myChart.setPieUnitsFontSize(10);-->
+    <!--myChart1.setDataArray(myData1);-->
+    <!--myChart1.draw();-->
+
+    <!--//饼状图-->
+    <!--var myData2 = new Array(['安抚',20], ['Unit 2',10], ['Unit 3',30], ['Unit 4',10],['Unit 5',5],['Unit 6',15],['Unit 7',5]);-->
+    <!--var myChart2 = new JSChart('chartcontainer2', 'pie');-->
+    <!--myChart2.setDataArray(myData2);-->
+    <!--myChart2.draw();-->
+
+    <!--//饼状图（xml导入数据）-->
+    <!--//var myChart3 = new JSChart('chartcontainer3', 'pie');-->
+   <!--// myChart3.setDataXML('/js/jschart_data.xml');-->
+   <!--// myChart3.draw();-->
+
+    <!--//饼状图（json导入数据）-->
+    <!--//var myChart4 = new JSChart('chartcontainer4', 'pie');-->
+    <!--//myChart4.setDataJSON('/js/jschart_data.json');-->
+    <!--//myChart4.draw();-->
+
+<!--</script>-->
+
+
+<!--</body>-->
+<!--</html>-->

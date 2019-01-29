@@ -36,7 +36,11 @@
 
 
     <select id="selectAllTimu" resultType="com.yun.answer_frame.entity.Timu">
-    select * from t_timu
+    select * from t_timu order by t_creat_date desc
+    </select>
+
+    <select id="selectAllTimuitemByTid" resultType="com.yun.answer_frame.entity.TimuItem">
+    select * from t_timuitem a,t_timu b where a.t_id=#{t_id} and a.t_id=b.t_id and b.is_publish="已发布"
     </select>
 
 

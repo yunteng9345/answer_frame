@@ -27,5 +27,6 @@ public interface TimuService {
     //添加题目
     Integer addTimuItem(TimuItem timuItem);
 
+    List<TimuItem> selectAllTimuitemByTid(Timu timu);
 
 }

@@ -19,4 +19,5 @@ public interface TimuMapper {
 
 
     Integer addTimuItem(TimuItem timuItem);
+    List<TimuItem> selectAllTimuitemByTid(Timu timu);
 }
