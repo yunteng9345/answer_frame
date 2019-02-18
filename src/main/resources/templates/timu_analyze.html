@@ -78,7 +78,7 @@
 <td th:text="${timu.ti_c}"></td>
 <td th:text="${timu.ti_d}"></td>
 <td th:text="${timu.ti_right}"></td>
-<td><div id="chartcontainer2">这只是一个替换内容</div><br/> </td>
+<td><br/><div id="chartcontainer2">这只是一个替换内容</div> </td>
 
 </tr>
 
@@ -91,28 +91,27 @@
 <div id="chartcontainer7">这只是一个替换内容</div><br/>
 
 <script type="text/javascript">
-    //曲线图
-    var myData = new Array([10,20], [15,10], [20,30], [25,10], [30,90]);
-    var myChart = new JSChart('chartcontainer', 'line');
-    myChart.setDataArray(myData);
-    myChart.draw();
-
-    //柱状图
-    var myData1 = new Array(['小明',20], ['小红',10], ['张三',30], ['李四',10],['王五',5]);
-    var myChart1 = new JSChart('chartcontainer1', 'bar');
-    myChart.patchMbString();
-    myChart.setFontFamily("微软雅黑"); // 设置显示字体为微软雅黑
-    myChart.setAxisValuesFontSize(9); // 设置柱状图和线条图的标尺字体大小为9px
-    myChart.setPieUnitsFontSize(10);
-    myChart1.setDataArray(myData1);
-    myChart1.draw();
+    // //曲线图
+    // var myData = new Array([10,20], [15,10], [20,30], [25,10], [30,90]);
+    // var myChart = new JSChart('chartcontainer', 'line');
+    // myChart.setDataArray(myData);
+    // myChart.draw();
+    //
+    // //柱状图
+    // var myData1 = new Array(['小明',20], ['小红',10], ['张三',30], ['李四',10],['王五',5]);
+    // var myChart1 = new JSChart('chartcontainer1', 'bar');
+    // myChart.patchMbString();
+    // myChart.setFontFamily("微软雅黑"); // 设置显示字体为微软雅黑
+    // myChart.setAxisValuesFontSize(9); // 设置柱状图和线条图的标尺字体大小为9px
+    // myChart.setPieUnitsFontSize(10);
+    // myChart1.setDataArray(myData1);
+    // myChart1.draw();
 
     //饼状图
-    var myData2 = new Array(['安抚',20], ['Unit 2',10], ['Unit 3',30], ['Unit 4',10],['Unit 5',5],['Unit 6',15],['Unit 7',5]);
+    var myData2 = new Array(['A',20], ['B',10], ['C',30], ['D',10]);
     var myChart2 = new JSChart('chartcontainer2', 'pie');
     myChart2.setDataArray(myData2);
-
-        myChart2.draw();
+    myChart2.draw();
 
     //饼状图（xml导入数据）
     //var myChart3 = new JSChart('chartcontainer3', 'pie');

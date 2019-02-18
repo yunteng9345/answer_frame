@@ -43,6 +43,18 @@
     select * from t_timuitem a,t_timu b where a.t_id=#{t_id} and a.t_id=b.t_id and b.is_publish="已发布"
     </select>
 
+    <update id="addSmallItemA" parameterType="com.yun.answer_frame.entity.TimuItem">
+    update t_timuitem set a_count=a_count+1 where ti_id=#{ti_id}
+    </update>
+    <update id="addSmallItemB" parameterType="com.yun.answer_frame.entity.TimuItem">
+    update t_timuitem set b_count=b_count+1 where ti_id=#{ti_id}
+    </update>
+    <update id="addSmallItemC" parameterType="com.yun.answer_frame.entity.TimuItem">
+    update t_timuitem set c_count=c_count+1 where ti_id=#{ti_id}
+    </update>
+    <update id="addSmallItemD" parameterType="com.yun.answer_frame.entity.TimuItem">
+    update t_timuitem set d_count=d_count+1 where ti_id=#{ti_id}
+    </update>
 
 
 

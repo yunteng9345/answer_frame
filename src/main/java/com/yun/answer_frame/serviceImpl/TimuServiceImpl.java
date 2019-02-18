@@ -21,6 +21,26 @@ public class TimuServiceImpl  implements TimuService {
     }
 
     @Override
+    public Integer addSmallItemA(TimuItem timuItem) {
+        return timuMapper.addSmallItemA(timuItem);
+    }
+
+    @Override
+    public Integer addSmallItemB(TimuItem timuItem) {
+        return timuMapper.addSmallItemB(timuItem);
+    }
+
+    @Override
+    public Integer addSmallItemC(TimuItem timuItem) {
+        return timuMapper.addSmallItemC(timuItem);
+    }
+
+    @Override
+    public Integer addSmallItemD(TimuItem timuItem) {
+        return timuMapper.addSmallItemD(timuItem);
+    }
+
+    @Override
     public Integer publishTimu(Timu timu) {
         return timuMapper.publishTimu(timu);
     }

@@ -15,8 +15,22 @@ public interface TimuMapper {
     Integer deleteTimu(Timu timu);
     Integer publishTimu(Timu timu);
     List<Timu> selectAllTimu();
-
-
+/*
+使选择的A选项加一
+ */
+    Integer addSmallItemA(TimuItem timuItem);
+    /*
+使选择的B选项加一
+ */
+    Integer addSmallItemB(TimuItem timuItem);
+    /*
+使选择的C选项加一
+ */
+    Integer addSmallItemC(TimuItem timuItem);
+    /*
+使选择的D选项加一
+ */
+    Integer addSmallItemD(TimuItem timuItem);
 
     Integer addTimuItem(TimuItem timuItem);
     List<TimuItem> selectAllTimuitemByTid(Timu timu);

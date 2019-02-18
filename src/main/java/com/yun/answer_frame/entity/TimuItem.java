@@ -16,18 +16,27 @@ public class TimuItem extends Timu {
     private String ti_c;
     private String ti_d;
     private String ti_right;
+    private Integer a_count;
+    private Integer b_count;
+    private Integer c_count;
+    private Integer d_count;
+
 
     @Override
     public String toString() {
         return "TimuItem{" +
                 "t_id='" + t_id + '\'' +
-                ", ti_id='" + ti_id + '\'' +
+                ", ti_id=" + ti_id +
                 ", ti_name='" + ti_name + '\'' +
                 ", ti_a='" + ti_a + '\'' +
                 ", ti_b='" + ti_b + '\'' +
                 ", ti_c='" + ti_c + '\'' +
                 ", ti_d='" + ti_d + '\'' +
                 ", ti_right='" + ti_right + '\'' +
+                ", a_count=" + a_count +
+                ", b_count=" + b_count +
+                ", c_count=" + c_count +
+                ", d_count=" + d_count +
                 '}';
     }
 

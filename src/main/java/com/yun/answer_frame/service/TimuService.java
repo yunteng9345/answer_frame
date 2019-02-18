@@ -29,4 +29,9 @@ public interface TimuService {
 
     List<TimuItem> selectAllTimuitemByTid(Timu timu);
 
+    Integer addSmallItemA(TimuItem timuItem);
+    Integer addSmallItemB(TimuItem timuItem);
+    Integer addSmallItemC(TimuItem timuItem);
+    Integer addSmallItemD(TimuItem timuItem);
+
 }
