@@ -56,6 +56,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>JScharts Test</title>
 </head>
+<link rel="stylesheet" type="text/css" href="../jquery-easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../jquery-easyui/themes/icon.css" />
+<script type="text/javascript" src="../jquery-easyui/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../jquery-easyui/jquery.easyui.min.js"></script>
+<!-- 中文化 -->
+<script type="text/javascript" src="../jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="/js/jscharts_mb.js"></script>
 <body>
 
@@ -78,17 +84,19 @@
 <td th:text="${timu.ti_c}"></td>
 <td th:text="${timu.ti_d}"></td>
 <td th:text="${timu.ti_right}"></td>
-<td><br/><div id="chartcontainer2">这只是一个替换内容</div> </td>
+<td>
+
+</td>
 
 </tr>
 
 </table>
 
+<div id="chartcontainer-0">这只是一个替换内容</div>
 
-
-<div id="chartcontainer">这只是一个替换内容</div><br/>
-<div id="chartcontainer1">这只是一个替换内容</div><br/>
-<div id="chartcontainer7">这只是一个替换内容</div><br/>
+<!--<div id="chartcontainer">这只是一个替换内容</div><br/>-->
+<!--<div id="chartcontainer1">这只是一个替换内容</div><br/>-->
+<!--<div id="chartcontainer7">这只是一个替换内容</div><br/>-->
 
 <script type="text/javascript">
     // //曲线图
@@ -107,11 +115,29 @@
     // myChart1.setDataArray(myData1);
     // myChart1.draw();
 
-    //饼状图
-    var myData2 = new Array(['A',20], ['B',10], ['C',30], ['D',10]);
-    var myChart2 = new JSChart('chartcontainer2', 'pie');
-    myChart2.setDataArray(myData2);
-    myChart2.draw();
+
+    //复制一个div
+    // window.onload = function () {
+    //     $.post("/anaylze/anaylzeTimuItem", {
+    //         ids: ids
+    //     }, function(result) {
+    //
+    //     }
+
+        var sourceNode = document.getElementById("chartcontainer-0"); // 获得被克隆的节点对象
+        for (var i = 1; i < 5; i++) {
+            var clonedNode = sourceNode.cloneNode(true); // 克隆节点
+            clonedNode.setAttribute("id", "chartcontainer-" + i); // 修改一下id 值，避免id 重复
+            sourceNode.parentNode.appendChild(clonedNode); // 在父节点插入克隆的节点
+            //饼状图
+            var myData2 = new Array(['A',20], ['B',10], ['C',30], ['D',10]);
+            var myChart2 = new JSChart('chartcontainer-'+i, 'pie');
+            myChart2.setDataArray(myData2);
+            myChart2.draw();
+
+        }
+
+
 
     //饼状图（xml导入数据）
     //var myChart3 = new JSChart('chartcontainer3', 'pie');

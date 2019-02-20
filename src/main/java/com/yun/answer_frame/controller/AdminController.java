@@ -47,6 +47,8 @@ public class AdminController {
         {
             HttpSession session=request.getSession();
             session.setAttribute("now_admin",admin1);
+            //设置当前登录账号永不过期
+            session.setMaxInactiveInterval(-1);
             model.addAttribute("now_admin",admin1.getAcademy()+"管理员");
 //            model.addAttribute("info","   ");
             return "back_index";
@@ -204,8 +206,8 @@ public class AdminController {
     }
 
     /**
-     * 发布题目集
-     * @param
+     * 将录入的题目进行发布
+     * @param ids
      * @return
      */
     @ResponseBody
