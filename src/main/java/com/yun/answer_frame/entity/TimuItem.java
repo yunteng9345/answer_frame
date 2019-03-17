@@ -100,6 +100,38 @@ public class TimuItem extends Timu {
         return ti_right;
     }
 
+    public Integer getA_count() {
+        return a_count;
+    }
+
+    public void setA_count(Integer a_count) {
+        this.a_count = a_count;
+    }
+
+    public Integer getB_count() {
+        return b_count;
+    }
+
+    public void setB_count(Integer b_count) {
+        this.b_count = b_count;
+    }
+
+    public Integer getC_count() {
+        return c_count;
+    }
+
+    public void setC_count(Integer c_count) {
+        this.c_count = c_count;
+    }
+
+    public Integer getD_count() {
+        return d_count;
+    }
+
+    public void setD_count(Integer d_count) {
+        this.d_count = d_count;
+    }
+
     public void setTi_right(String ti_right) {
         this.ti_right = ti_right;
     }

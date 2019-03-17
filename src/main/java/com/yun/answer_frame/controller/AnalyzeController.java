@@ -66,7 +66,10 @@ public class AnalyzeController {
         Timu timu =new Timu();
         timu.setT_id(t_id);
         model.addAttribute("alltimuitem",timuService.selectAllTimuitemByTid(timu));
-
+        List<TimuItem> timuItems = timuService.selectAllTimuitemByTid(timu);
+        for(TimuItem timuItem:timuItems) {
+            System.out.println(timuItem.getA_count());
+        }
         return "timu_analyze";
     }
 

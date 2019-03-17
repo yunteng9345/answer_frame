@@ -65,7 +65,7 @@
 <script type="text/javascript" src="/js/jscharts_mb.js"></script>
 <body>
 
-<table border="1">
+<table border="1" style="width:70%;hight:100%;  float:left;">
 <tr>
 <th>题目编号</th>
 <th>题目内容</th>
@@ -74,63 +74,58 @@
 <th>C</th>
 <th>D</th>
 <th>正确答案</th>
-<th>答案分布</th>
 </tr>
-<tr  th:each="timu : ${alltimuitem}">
+<tr  th:each="timu : ${alltimuitem}" style="height: 306px;">
 <td th:text="${timu.ti_id}">题目编号</td>
 <td th:text="${timu.ti_name}">题目内容</td>
 <td th:text="${timu.ti_a}"></td>
 <td th:text="${timu.ti_b}"></td>
 <td th:text="${timu.ti_c}"></td>
 <td th:text="${timu.ti_d}"></td>
-<td th:text="${timu.ti_right}"></td>
-<td>
-
+<td th:text="${timu.ti_right}">
 </td>
 
 </tr>
 
 </table>
 
-<div id="chartcontainer-0">这只是一个替换内容</div>
+
+<table border="1" style="width:30%;hight:100%;float:left;";>
+    <tr>
+        <th>饼状答案分布</th>
+
+    </tr>
+
+    <tr  style="height: 250px;">
+        <td >
+            <div id="chartcontainer-0"></div>
+        </td>
+
+
+    </tr>
+
+</table>
+
+
+
+
 
 <!--<div id="chartcontainer">这只是一个替换内容</div><br/>-->
 <!--<div id="chartcontainer1">这只是一个替换内容</div><br/>-->
 <!--<div id="chartcontainer7">这只是一个替换内容</div><br/>-->
 
-<script type="text/javascript">
-    // //曲线图
-    // var myData = new Array([10,20], [15,10], [20,30], [25,10], [30,90]);
-    // var myChart = new JSChart('chartcontainer', 'line');
-    // myChart.setDataArray(myData);
-    // myChart.draw();
-    //
-    // //柱状图
-    // var myData1 = new Array(['小明',20], ['小红',10], ['张三',30], ['李四',10],['王五',5]);
-    // var myChart1 = new JSChart('chartcontainer1', 'bar');
-    // myChart.patchMbString();
-    // myChart.setFontFamily("微软雅黑"); // 设置显示字体为微软雅黑
-    // myChart.setAxisValuesFontSize(9); // 设置柱状图和线条图的标尺字体大小为9px
-    // myChart.setPieUnitsFontSize(10);
-    // myChart1.setDataArray(myData1);
-    // myChart1.draw();
+<script th:inline="javascript">
 
-
-    //复制一个div
-    // window.onload = function () {
-    //     $.post("/anaylze/anaylzeTimuItem", {
-    //         ids: ids
-    //     }, function(result) {
-    //
-    //     }
-
+        var message = [[${alltimuitem}]];
+        //console.log("data"+message[0].ti_a);
+        //console.log("no data"+message.ti_a);
         var sourceNode = document.getElementById("chartcontainer-0"); // 获得被克隆的节点对象
-        for (var i = 1; i < 5; i++) {
+        for (var i = 0; i < message.length; i++) {
             var clonedNode = sourceNode.cloneNode(true); // 克隆节点
             clonedNode.setAttribute("id", "chartcontainer-" + i); // 修改一下id 值，避免id 重复
             sourceNode.parentNode.appendChild(clonedNode); // 在父节点插入克隆的节点
             //饼状图
-            var myData2 = new Array(['A',20], ['B',10], ['C',30], ['D',10]);
+            var myData2 = new Array(['A',message[i].a_count], ['B',message[i].b_count], ['C',message[i].c_count], ['D',message[i].d_count]);
             var myChart2 = new JSChart('chartcontainer-'+i, 'pie');
             myChart2.setDataArray(myData2);
             myChart2.draw();
